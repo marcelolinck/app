@@ -23,15 +23,34 @@ Processar os dadps(manipular, alterar ...)
 Apresentar os dados
 
 ## Escopo e variaveis
-Variaveis Globais e locais
-Constantes
+- [x]Variaveis Globais e locais
+- [x]Constantes
 
 ## Tipos de dados
 
-String (textos):
-Numbers: 1234
+- [x]String (textos): "" ''``
+- [x]Numbers: 1234
+- [x] boolean: true ou false
 
 ## Operadores
 
-Operadores de atribucao de valor
+- [x]Operadores de atribucao de valor operador =
+- [x]Operador de concatenação operador +
+
+## Estrutura de dados:
+
+### Arrays:
+
+- [x]Uma lista de contém qualquer tipo de dado
+
+### Objetos:
+
+- [x]Atributos e métodos
+- [x]Criação e manipulacao de objetos
+- [x]Acesso a propriedades de objetos
+
+### Functions
+- [x] criar, passar argumento
+- [x] executar
+- [x] arrow function / named function
 

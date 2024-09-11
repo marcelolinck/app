@@ -57,5 +57,14 @@ Apresentar os dados
 ## Estrutura de repeticao
 -[x] while
 
-#Condicionais
-- Switch
+## Condicionais
+-[x] Switch
+
+
+## Módulos em Node.js
+-[x] Importação de módulos(require, CommomJs)
+-[x] Biblioteca 'ínquirer' para criar prompts interativos
+
+
+## Programação assíncrona e Promisses:
+-[x] Uso de funções assíncronas(async/await)

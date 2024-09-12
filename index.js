@@ -63,7 +63,7 @@ const metasRealizadas = async () => {
   }
 
   await select({
-    message: "Metas realizadas " + realizadas.length,
+    message: "Metas realizadas: " + realizadas.length,
     choices: [...realizadas], ///spread operator para adicoonar a lista original dentro de choices
   });
 };
@@ -79,9 +79,43 @@ const metasAbertas = async () => {
   }
 
   await select({
-    message: "Metas abertas" + abertas.length,
+    message: "Metas abertas: " + abertas.length,
     choices: [...abertas], ///spread operator para adicoonar a lista original dentro de choices
   });
+};
+const deletarMetas = async () => {
+
+  const metasDesmarcadas = metas.map((meta)=>{ // nesse caso irá criar um novo array para que nào apresente falha ao carregar a lista de meta
+    return {value: meta.value, checked: false}
+  })
+
+  const itensADeletar = await checkbox({
+    message:
+      "Selecione item para deletar",
+
+    //Tem que ser um array
+    choices: [...metasDesmarcadas], //operador spread para carregar as metas cadastradas, mas todas desmarcadas
+    instructions: false,
+  });
+
+  if (itensADeletar.length == 0) {
+    console.log('Nenhum item para deletar!')
+    return
+    
+  }
+
+  ///Logica para deletar
+  itensADeletar.forEach((item)=>{
+
+    metas = metas.filter((meta)=>{ //Ira permanecer na lista somente os itens que foram diferentes do item deletado
+      return meta.value != item
+    })
+
+    console.log("Meta(s) deletada(s) com sucesso!")
+
+
+  })
+
 };
 
 const start = async () => {
@@ -105,6 +139,10 @@ const start = async () => {
         {
           name: "Metas abertas",
           value: "abertas",
+        },
+        {
+          name: "Excluir metas",
+          value: "excluir",
         },
         {
           name: "Sair",
@@ -132,8 +170,12 @@ const start = async () => {
         await metasAbertas();
         // console.log(metas);
         break;
+      case "excluir":
+        await deletarMetas();
+        // console.log(metas);
+        break;
       case "sair":
-        console.log("vamos sair");
+        console.log("Saindo, até mais!");
         return;
     }
   }

@@ -68,7 +68,13 @@ Apresentar os dados
 ## Módulos em Node.js
 -[x] Importação de módulos(require, CommomJs)
 -[x] Biblioteca 'ínquirer' para criar prompts interativos
+-[x] FS(File system)
 
+## Json
+
+-[x] Java Script Object notation(.json)
+-[x] Json.parse(): Transforma de json para js
+-[x] Json.stringFy(): Transforma de js para json
 
 ## Programação assíncrona e Promisses:
 -[x] Uso de funções assíncronas(async/await)

@@ -10,7 +10,7 @@ let metas
 
 const carregarMetas = async()=>{
   try {
-    const dados = await fs.readFile("metas.json", "utf-8")
+    const dados = await fs.readFile("metas.json", "utf-8") //Para carregar o json para o app
     metas = JSON.parse(dados)
     
   } catch (erro){
@@ -20,7 +20,7 @@ const carregarMetas = async()=>{
 }
 
 const salvarMetas = async () => {
-  await fs.writeFile("metas.json", JSON.stringify(metas, null,2))
+  await fs.writeFile("metas.json", JSON.stringify(metas, null,2)) //Para gravar as metas, eu preciso converter o array em json dessa forma
 }
 
 const cadastrarMeta = async () => {
@@ -39,6 +39,12 @@ const cadastrarMeta = async () => {
 };
 
 const listarMetas = async () => {
+
+  if (metas.length == 0) {
+    mensagem = "Não existem metas!"
+    return   
+  }
+
   const respostas = await checkbox({
     message:
       "Use as setas para mudar de meta, o espaço pra desmarcar ou marcar e o Enter para finalizar a etapa",
@@ -71,6 +77,12 @@ const listarMetas = async () => {
 };
 
 const metasRealizadas = async () => {
+
+  if (metas.length == 0) {
+    mensagem = "Não existem metas!"
+    return   
+  }
+
   const realizadas = metas.filter((meta) => {
     return meta.checked;
   });
@@ -86,6 +98,12 @@ const metasRealizadas = async () => {
   });
 };
 const metasAbertas = async () => {
+
+  if (metas.length == 0) {
+    mensagem = "Não existem metas!"
+    return   
+  }
+
   const abertas = metas.filter((meta) => {
     // return !meta.checked;
     return meta.checked != true;
@@ -102,6 +120,11 @@ const metasAbertas = async () => {
   });
 };
 const deletarMetas = async () => {
+
+  if (metas.length == 0) {
+    mensagem = "Não existem metas!"
+    return   
+  }
 
   const metasDesmarcadas = metas.map((meta)=>{ // nesse caso irá criar um novo array para que nào apresente falha ao carregar a lista de meta
     return {value: meta.value, checked: false}
@@ -148,10 +171,11 @@ const mostrarMensagem = () =>{
 
 }
 const start = async () => {
-  carregarMetas() //somente para carregar as metas
+  await carregarMetas() //somente para carregar as metas
   
   while (true) {
     mostrarMensagem()
+    await salvarMetas()
 
     const opcao = await select({
       //Aguardando a escolha
@@ -193,6 +217,7 @@ const start = async () => {
         break;
       case "listar":
         await listarMetas();
+        
         //console.log(metas);
         break;
       case "realizadas":

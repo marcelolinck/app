@@ -28,21 +28,23 @@ Apresentar os dados
 
 ## Tipos de dados
 
-- [x]String (textos): "" ''``
-- [x]Numbers: 1234
+- [x] String (textos): "" ''``
+- [x] Numbers: 1234
 - [x] boolean: true ou false
 
 ## Operadores
 
-- [x]Operadores de atribucao de valor operador =
-- [x]Operador de concatenação: +
-- [x]Operador de comparacao: == != <= >=
+- [x] Operadores de atribucao de valor operador =
+- [x] Operador de concatenação: +
+- [x] Operador de comparacao: == != <= >=
+- [x] Spread Operator: ...
 
 ## Estrutura de dados:
 
 ### Arrays:
 
-- [x]Uma lista de contém qualquer tipo de dado
+- [x] Uma lista de contém qualquer tipo de dado
+- [x] Metodos de array - É toda a funcao dentro de um objeto: push,[ find, foreEach, filter] : HOF (Higher Order Functions)
 
 ### Objetos:
 

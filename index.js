@@ -30,16 +30,15 @@ const listarMetas = async () => {
     instructions: false,
   });
 
-  metas.forEach((m) => { //Essa logica é para percorrer a lista e deixar desmarcado o que está desmarcada
-    m.checked = false
+  metas.forEach((m) => {
+    //Essa logica é para percorrer a lista e deixar desmarcado o que está desmarcada
+    m.checked = false;
   });
 
   if (respostas.length == 0) {
     console.log("Nenhuma meta selecionada!");
     return;
   }
-
- 
 
   respostas.forEach((resposta) => {
     //Nesse ponto ira percorrer a lista de opcoes e irá marcar somente o que foi selecionado como true
@@ -53,22 +52,37 @@ const listarMetas = async () => {
   console.log("Meta(s concluida(s)");
 };
 
-const metasRealizadas = async () =>{
-  const realizadas = metas.filter((meta)=>{
-      return meta.checked
-  })
+const metasRealizadas = async () => {
+  const realizadas = metas.filter((meta) => {
+    return meta.checked;
+  });
 
-
-  if (realizadas.length == 0 ) {
-    console.log('Não existem metas realizadas! :(')
-    return
+  if (realizadas.length == 0) {
+    console.log("Não existem metas realizadas! :(");
+    return;
   }
 
   await select({
-    message: "Metas realizadas",
-    choices: [...realizadas] ///spread operator para adicoonar a lista original dentro de choices
-  })
-}
+    message: "Metas realizadas " + realizadas.length,
+    choices: [...realizadas], ///spread operator para adicoonar a lista original dentro de choices
+  });
+};
+const metasAbertas = async () => {
+  const abertas = metas.filter((meta) => {
+    // return !meta.checked;
+    return meta.checked != true;
+  });
+
+  if (abertas.length == 0) {
+    console.log("Não existem metas abertas! :)");
+    return;
+  }
+
+  await select({
+    message: "Metas abertas" + abertas.length,
+    choices: [...abertas], ///spread operator para adicoonar a lista original dentro de choices
+  });
+};
 
 const start = async () => {
   while (true) {
@@ -87,6 +101,10 @@ const start = async () => {
         {
           name: "Metas realizadas",
           value: "realizadas",
+        },
+        {
+          name: "Metas abertas",
+          value: "abertas",
         },
         {
           name: "Sair",
@@ -108,7 +126,11 @@ const start = async () => {
         break;
       case "realizadas":
         await metasRealizadas();
-       // console.log(metas);
+        // console.log(metas);
+        break;
+      case "abertas":
+        await metasAbertas();
+        // console.log(metas);
         break;
       case "sair":
         console.log("vamos sair");

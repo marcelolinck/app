@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "value": "Correr na academia",
+    "checked": false
+  },
+  {
+    "value": "Estudar node",
+    "checked": false
+  },
+  {
+    "value": "Abastecer o carro",
+    "checked": false
+  }
+]
